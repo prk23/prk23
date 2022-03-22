@@ -1,55 +1,44 @@
-import React, { useState } from "react";
-import Expenses from "./components/Expenses/Expenses";
-import NewExpense from "./components/NewExpense/NewExpense"
+import React, { useState } from 'react';
 
-const DUMMYARRAY = [
+import NewExpense from './components/NewExpense/NewExpense';
+import Expenses from './components/Expenses/Expenses';
+
+const DUMMY_EXPENSES = [
   {
     id: 'e1',
-    name: 'nameOne',
-    date: new Date(2022, 9, 11),
-    cost: 3452.44
+    title: 'Toilet Paper',
+    amount: 94.12,
+    date: new Date(2020, 7, 14),
   },
-  {
-    id: 'e2',
-    name: 'NameTwo',
-    date: new Date(2012, 11, 3),
-    cost: 22.44
-  },
+  { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
   {
     id: 'e3',
-    name: 'NameThree',
-    date: new Date(2021, 6, 23),
-    cost: 232.44
+    title: 'Car Insurance',
+    amount: 294.67,
+    date: new Date(2021, 2, 28),
   },
   {
     id: 'e4',
-    name: 'nameFour',
-    date: new Date(2023, 5, 15),
-    cost: 35345.44
-  }
+    title: 'New Desk (Wooden)',
+    amount: 450,
+    date: new Date(2021, 5, 12),
+  },
 ];
-const App = () => {
 
-  const [expenses, setExpenses] = useState(DUMMYARRAY)
+const App = () => {
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
   const addExpenseHandler = (expense) => {
-    // setExpenses([expense, ...expenses])  // not a receommended way to updating a state that is depending snapshot of the previous state
-
-    // instead try this clean way
-    // setExpenses(prevExpense => {
-    //   return [expense, ...prevExpense]
-    // })
-
     setExpenses((prevExpenses) => {
-      return [expense, ...prevExpenses]
+      return [expense, ...prevExpenses];
     });
   };
 
   // return React.createElement(
-  //   'div', 
-  //   {}, 
-  //   React.createElement('h1', {}, `Let's get started`),
-  //   React.createElement(Expenses, {items: itemsArray})
+  //   'div',
+  //   {},
+  //   React.createElement('h2', {}, "Let's get started!"),
+  //   React.createElement(Expenses, { items: expenses })
   // );
 
   return (
@@ -58,6 +47,6 @@ const App = () => {
       <Expenses items={expenses} />
     </div>
   );
-}
+};
 
 export default App;
